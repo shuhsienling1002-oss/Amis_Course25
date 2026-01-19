@@ -68,31 +68,31 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. 資料庫 (Unit 25: 14個單字 - 句子提取核心詞) ---
+# --- 2. 資料庫 (Unit 25: 14個單字 - User Fix) ---
 vocab_data = [
     {"amis": "Matawa", "chi": "笑", "icon": "😄", "source": "Row 5"},
-    {"amis": "Tangic", "chi": "哭 / 哭聲", "icon": "😭", "source": "Row 238"},
+    {"amis": "Tangic", "chi": "哭 (詞根)", "icon": "😭", "source": "User Fix"}, # 修正
     {"amis": "Maolah", "chi": "喜歡 / 愛", "icon": "❤️", "source": "Row 18"},
     {"amis": "Mafana'", "chi": "知道 / 認識 / 會", "icon": "💡", "source": "Row 6"},
-    {"amis": "Matengil", "chi": "聽到", "icon": "👂", "source": "Row 238"},
+    {"amis": "Tengil", "chi": "聽 (詞根)", "icon": "👂", "source": "User Fix"}, # 修正
     {"amis": "Soni", "chi": "聲音", "icon": "🔊", "source": "Row 238"},
     {"amis": "Mafoti'", "chi": "睡覺", "icon": "😴", "source": "Row 4"},
-    {"amis": "Palaso'elin", "chi": "相信", "icon": "🙏", "source": "Row 508"},
+    {"amis": "Mipaso'elin", "chi": "相信", "icon": "🙏", "source": "User Fix"}, # 修正
     {"amis": "Mapapadang", "chi": "互相幫忙", "icon": "🤝", "source": "Row 384"},
     {"amis": "Kapah", "chi": "青年 / 年輕人", "icon": "🧑", "source": "Row 4"},
     {"amis": "Widang", "chi": "朋友", "icon": "👯", "source": "Row 508"},
     {"amis": "Tatiih", "chi": "壞的 / 糟糕的", "icon": "👎", "source": "Row 473"},
     {"amis": "Ma^emin", "chi": "全部 / 所有的", "icon": "💯", "source": "Row 508"},
-    {"amis": "Tengil", "chi": "聽 (字根)", "icon": "🎧", "source": "Moedict: tengil"},
+    {"amis": "Matengil", "chi": "聽到 (被動)", "icon": "🎧", "source": "Row 238"},
 ]
 
 # --- 句子庫 (7句: 嚴格源自 CSV 並移除連字號) ---
 sentences = [
     {"amis": "Matawa ci Panay takowanan.", "chi": "Panay笑我。", "icon": "😄", "source": "Row 5"},
-    {"amis": "Maolah koya a wawa ciiraan.", "chi": "那個小孩喜歡他。", "icon": "❤️", "source": "Row 18"},
     {"amis": "Minokay kako 'i, matengil no mako ko soni no tangic.", "chi": "當我回家的時候，哭聲被我聽見。", "icon": "😭", "source": "Row 238"},
+    {"amis": "Mipaso'elin ko widang no mako takowanan a ma^emin.", "chi": "我的朋友全部都相信我。", "icon": "🙏", "source": "Row 508 (Adapted to Mipaso'elin)"},
+    {"amis": "Maolah koya a wawa ciiraan.", "chi": "那個小孩喜歡他。", "icon": "❤️", "source": "Row 18"},
     {"amis": "Mafana' ci Kacaw tisowanan.", "chi": "Kacaw認識你。", "icon": "💡", "source": "Row 6"},
-    {"amis": "Mipalaso'elin ko widang no mako takowanan a ma^emin.", "chi": "我的朋友全部都相信我。", "icon": "🙏", "source": "Row 508"},
     {"amis": "Mafoti' koni a kapah.", "chi": "這位青年在睡覺。", "icon": "😴", "source": "Row 4"},
     {"amis": "Mapapadang kita.", "chi": "大家互相幫忙。", "icon": "🤝", "source": "Row 384"},
 ]
@@ -107,11 +107,11 @@ raw_quiz_pool = [
         "hint": "Matawa (笑) (Row 5)"
     },
     {
-        "q": "Mafana' ci Kacaw tisowanan.",
-        "audio": "Mafana' ci Kacaw tisowanan",
-        "options": ["Kacaw認識你", "Kacaw討厭你", "Kacaw打你"],
-        "ans": "Kacaw認識你",
-        "hint": "Mafana' (知道/認識) (Row 6)"
+        "q": "Minokay kako 'i, matengil no mako...",
+        "audio": "Minokay kako 'i, matengil no mako",
+        "options": ["被我聽見", "被我看見", "被我聞到"],
+        "ans": "被我聽見",
+        "hint": "Matengil (被聽見) (Row 238)"
     },
     {
         "q": "單字測驗：Tangic",
@@ -121,11 +121,11 @@ raw_quiz_pool = [
         "hint": "Row 238: ...soni no tangic (哭的聲音)"
     },
     {
-        "q": "單字測驗：Palaso'elin",
-        "audio": "Palaso'elin",
+        "q": "單字測驗：Mipaso'elin",
+        "audio": "Mipaso'elin",
         "options": ["相信", "懷疑", "知道"],
         "ans": "相信",
-        "hint": "Row 508: 我的朋友都 Palaso'elin 我"
+        "hint": "User Fix: Mipaso'elin"
     },
     {
         "q": "Maolah koya a wawa ciiraan.",
@@ -142,11 +142,11 @@ raw_quiz_pool = [
         "hint": "Row 4: 青年在 Mafoti'"
     },
     {
-        "q": "單字測驗：Matengil",
-        "audio": "Matengil",
-        "options": ["聽到", "看到", "聞到"],
-        "ans": "聽到",
-        "hint": "用耳朵 Matengil (Row 238)"
+        "q": "單字測驗：Tengil",
+        "audio": "Tengil",
+        "options": ["聽 (詞根)", "看 (詞根)", "說 (詞根)"],
+        "ans": "聽 (詞根)",
+        "hint": "耳朵的功能"
     },
     {
         "q": "單字測驗：Kapah",
@@ -177,7 +177,7 @@ if 'init' not in st.session_state:
 
 # --- 5. 主介面 ---
 st.markdown("<h1 style='text-align: center; color: #880E4F;'>Unit 25: O Faloco'</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #666;'>情緒與感受 (Feelings & Emotions)</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #666;'>情緒與感受 (User Corrected)</p>", unsafe_allow_html=True)
 
 tab1, tab2 = st.tabs(["📚 詞彙與句型", "🎲 隨機挑戰"])
 
