@@ -90,14 +90,14 @@ vocab_data = [
 sentences = [
     {"amis": "Matawa ci Panay takowanan.", "chi": "Panay笑我。", "icon": "😄", "source": "Row 5"},
     {"amis": "Minokay kako 'i, matengil no mako ko soni no tangic.", "chi": "當我回家的時候，哭聲被我聽見。", "icon": "😭", "source": "Row 238"},
-    {"amis": "Mipaso'elin ko widang no mako takowanan a ma^emin.", "chi": "我的朋友全部都相信我。", "icon": "🙏", "source": "Row 508 (Adapted to Mipaso'elin)"},
+    {"amis": "Mipaso'elin ko widang no mako takowanan a ma^emin.", "chi": "我的朋友全部都相信我。", "icon": "🙏", "source": "Row 508 (Adapted)"},
     {"amis": "Maolah koya a wawa ciiraan.", "chi": "那個小孩喜歡他。", "icon": "❤️", "source": "Row 18"},
     {"amis": "Mafana' ci Kacaw tisowanan.", "chi": "Kacaw認識你。", "icon": "💡", "source": "Row 6"},
     {"amis": "Mafoti' koni a kapah.", "chi": "這位青年在睡覺。", "icon": "😴", "source": "Row 4"},
     {"amis": "Mapapadang kita.", "chi": "大家互相幫忙。", "icon": "🤝", "source": "Row 384"},
 ]
 
-# --- 3. 隨機題庫 (Synced) ---
+# --- 3. 隨機題庫 (Synced & Fixed) ---
 raw_quiz_pool = [
     {
         "q": "Matawa ci Panay takowanan.",
@@ -114,10 +114,10 @@ raw_quiz_pool = [
         "hint": "Matengil (被聽見) (Row 238)"
     },
     {
-        "q": "單字測驗：Tangic",
+        "q": "單字測驗：Tangic", # 修正處
         "audio": "Tangic",
-        "options": ["哭/哭聲", "笑聲", "歌聲"],
-        "ans": "哭/哭聲",
+        "options": ["哭 (詞根)", "笑 (詞根)", "聽 (詞根)"],
+        "ans": "哭 (詞根)",
         "hint": "Row 238: ...soni no tangic (哭的聲音)"
     },
     {
@@ -142,7 +142,7 @@ raw_quiz_pool = [
         "hint": "Row 4: 青年在 Mafoti'"
     },
     {
-        "q": "單字測驗：Tengil",
+        "q": "單字測驗：Tengil", # 修正處
         "audio": "Tengil",
         "options": ["聽 (詞根)", "看 (詞根)", "說 (詞根)"],
         "ans": "聽 (詞根)",
@@ -177,7 +177,7 @@ if 'init' not in st.session_state:
 
 # --- 5. 主介面 ---
 st.markdown("<h1 style='text-align: center; color: #880E4F;'>Unit 25: O Faloco'</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #666;'>情緒與感受 (User Corrected)</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #666;'>情緒與感受 (Tangic Corrected)</p>", unsafe_allow_html=True)
 
 tab1, tab2 = st.tabs(["📚 詞彙與句型", "🎲 隨機挑戰"])
 
